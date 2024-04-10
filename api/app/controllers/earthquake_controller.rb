@@ -1,4 +1,3 @@
-require "#{Rails.root}/app/services/external_api_service.rb"
 require "#{Rails.root}/app/controllers/dtos/earthquake_dto"
 require "#{Rails.root}/app/controllers/dtos/earthquakes_dto"
 require "#{Rails.root}/app/controllers/dtos/attributes_dto"
@@ -14,62 +13,49 @@ class EarthquakeController < ApplicationController
     MAX_PER_PAGE = 1000
     DEFAULT_PAGE = 1
 
-    # POST /bulk 
-    def bulk_insert
-        @allEarthquakesApi = ExternalApiService.get_earthquake
-
-        @allEarthquakesApi["features"].each do |feature| 
-        earthquake = create_earthquake_structure(feature)
-
-        if is_valid_earthquake?(earthquake)
-            Earthquake.find_or_create_by(earthquake)
-        end
-        end
-
-        render json: "Bulk executed sucessfully", status: :ok
-
-    rescue StandardError => e
-        render json: { error: e.message }, status: :unprocessable_entity
-    end
-
-    # GET /features
+    # GET api/features
     def index
         per_page = (params[:per_page] || DEFAULT_PER_PAGE).to_i.clamp(1, MAX_PER_PAGE)
         page = (params[:page] || DEFAULT_PAGE).to_i
-        mag_type = params[:mag_type].in?(MagType::TYPES.values) ? params[:mag_type] : nil
+        mag_types = params[:mag_type].present? ? params[:mag_type].split(",") : Array.new
 
-        puts params[:mag_type]
-        puts mag_type
+        mag_types_valid = Array.new
 
-        earthquakes_query = Earthquake.all
-        earthquakes_query = earthquakes_query.where(mag_type: mag_type) if mag_type
+        mag_types.each do |mag_type|
+            if mag_type.in?(MagType::TYPES.values)
+                mag_types_valid.push(mag_type)
+            end
+        end
 
-        @total_count = earthquakes_query.count
-        @allEarthquake = earthquakes_query.paginate(page: page, per_page: per_page)
+        features_query = Features.all
+        features_query = features_query.where(mag_type: mag_types_valid) if !mag_types_valid.empty?
 
-        earthquakes = Array.new
+        @total_count = features_query.count
+        @all_features = features_query.paginate(page: page, per_page: per_page)
 
-        @allEarthquake.each do |earthquake| 
-        coordinates = CoordinatesDTO.new(earthquake["longitude"], earthquake["latitude"])
+        features = Array.new
+
+        @all_features.each do |feature| 
+        coordinates = CoordinatesDTO.new(feature["longitude"], feature["latitude"])
         
         attributes = AttributesDTO.new(
-            earthquake["external_id"], 
-            earthquake["mag"], 
-            earthquake["place"], 
-            earthquake["time"], 
-            earthquake["tsunami"], 
-            earthquake["mag_type"], 
-            earthquake["title"], 
+            feature["external_id"], 
+            feature["mag"], 
+            feature["place"], 
+            feature["time"], 
+            feature["tsunami"], 
+            feature["mag_type"], 
+            feature["title"], 
             coordinates
         )
         
-        links = LinksDTO.new(earthquake["url"])
-        earthquake = EarthquakeDTO.new(earthquake["id"], "feature", attributes, links)
-        earthquakes.push(earthquake)
+        links = LinksDTO.new(feature["url"])
+        feature = EarthquakeDTO.new(feature["id"], "feature", attributes, links)
+        features.push(feature)
         end
 
         pagination = PaginationDTO.new(page, @total_count, per_page)
-        response = EarthquakesDTO.new(earthquakes, pagination)
+        response = EarthquakesDTO.new(features, pagination)
 
         render json: response, status: :ok 
     end
@@ -99,35 +85,8 @@ class EarthquakeController < ApplicationController
     #     end
     #   end
     # end
-
-    private
-
-    def create_earthquake_structure(feature)
-        {
-        external_id: feature["id"],
-        mag: feature["properties"]["mag"],
-        place: feature["properties"]["place"],
-        time: feature["properties"]["time"],
-        url: feature["properties"]["url"],
-        tsunami: feature["properties"]["tsunami"],
-        mag_type: feature["properties"]["magType"],
-        title: feature["properties"]["title"],
-        longitude: feature["geometry"]["coordinates"][0],
-        latitude: feature["geometry"]["coordinates"][1]
-        }
-    end
-
-    def is_valid_earthquake?(earthquake)
-        !earthquake[:title].nil? &&
-        !earthquake[:url].nil? &&
-        !earthquake[:place].nil? &&
-        !earthquake[:mag_type].nil? &&
-        earthquake[:mag].between?(-1.0, 10.0) &&
-        earthquake[:latitude].between?(-90.0, 90.0) &&
-        earthquake[:longitude].between?(-180.0, 180.0)
-    end
-
-    private
+    
+    # private
 
   # Body
     #   def earthquake_params

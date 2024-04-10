@@ -1,3 +1,3 @@
 class Comments < ApplicationRecord
-    belongs_to :earthquake, foreign_key: :feature_id
+    belongs_to :features, foreign_key: :feature_id
 end
