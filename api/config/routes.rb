@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   # # Defines the root path route ("/")
   # # root "posts#index"
 
-  post '/bulk', to: 'earthquake#bulk_insert'
-  get '/earthquake', to: 'earthquake#index'
-  get '/earthquake/:id', to: 'earthquake#show'
-  post '/earthquake', to: 'earthquake#create'
+  post 'api/bulk', to: 'earthquake#bulk_insert'
+  get 'api/features', to: 'earthquake#index'
+  # get 'api/features/:id', to: 'earthquake#show'
+  # post '/features', to: 'earthquake#create'
+  post 'api/features/:id/comments', to: 'comments#create'
 end
