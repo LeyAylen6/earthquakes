@@ -11,29 +11,29 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_04_09_212053) do
-  create_table "comments", force: :cascade do |t|
-    t.integer "feature_id"
-    t.string "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+    create_table "comments", force: :cascade do |t|
+        t.integer "feature_id"
+        t.string "body", null: false
+        t.datetime "created_at", null: false
+        t.datetime "updated_at", null: false
+    end
 
-  create_table "earthquakes", force: :cascade do |t|
-    t.float "mag"
-    t.string "external_id"
-    t.string "place", null: false
-    t.integer "time"
-    t.string "url", null: false
-    t.integer "tsunami"
-    t.string "mag_type", null: false
-    t.string "title", null: false
-    t.float "longitude", null: false
-    t.float "latitude", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.check_constraint "latitude >= -90.0 AND latitude <= 90.0"
-    t.check_constraint "longitude >= -180.0 AND longitude <= 180.0"
-    t.check_constraint "mag >= -1.0 AND mag <= 10.0"
-  end
+    create_table "earthquakes", force: :cascade do |t|
+        t.float "mag"
+        t.string "external_id"
+        t.string "place", null: false
+        t.integer "time"
+        t.string "url", null: false
+        t.integer "tsunami"
+        t.string "mag_type", null: false
+        t.string "title", null: false
+        t.float "longitude", null: false
+        t.float "latitude", null: false
+        t.datetime "created_at", null: false
+        t.datetime "updated_at", null: false
+        t.check_constraint "latitude >= -90.0 AND latitude <= 90.0"
+        t.check_constraint "longitude >= -180.0 AND longitude <= 180.0"
+        t.check_constraint "mag >= -1.0 AND mag <= 10.0"
+    end
 
 end
