@@ -20,4 +20,13 @@ class CommentsController < ApplicationController
             render json: @comment.errors, status: :unprocessable_entity
         end
     end
+
+    # GET api/features/:id/comments
+    def show
+        @comments = Comments.where(feature_id: params[:id]).order(id: :desc)
+        render json: @comments, status: :ok
+
+    rescue ActiveRecord::RecordNotFound
+        render json: { error: @comments.errors}, status: :not_found
+    end
 end

@@ -1,0 +1,33 @@
+.containerComments {
+    width: 35%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start
+}
+
+.makeComment {
+    display: flex;
+    margin-top: 3rem;
+    width: 90%;
+    padding-left: .5rem
+}
+
+.comments {
+    overflow: scroll;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    height: 60vh;
+    position: relative;
+}
+
+.comment {
+    width: 90%;
+    height: max-content;
+    max-width: 90%;
+    min-height: 5rem;
+    margin-top: 1rem;
+    padding: 10px;
+    margin-right: 2.1rem;
+    overflow: hidden;
+}

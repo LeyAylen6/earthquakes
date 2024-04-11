@@ -1,4 +1,4 @@
-import { Menu } from "./interfaces";
+import { Menu } from "./components/Navbar/interfaces";
 
 export const menu: Menu[] = [
     { title: 'Eathquakes', navigate: 'home' },

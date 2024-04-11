@@ -59,37 +59,4 @@ class EarthquakeController < ApplicationController
 
         render json: response, status: :ok 
     end
-
-    # # GET /earthquake/:id
-    # def show
-    #   @earthquakeById = Earthquake.find(params[:id])
-    #   render json: @earthquakeById, status: :ok
-
-    # rescue ActiveRecord::RecordNotFound
-    #   render json: { error: "Earthquake not found"}, status: :not_found
-    # end
-
-    # # POST /earthquake
-    # def create
-    #   @earthquake = Earthquake.new(earthquake_params)
-
-    #   if @earthquake.save
-    #     render json: @earthquake, status: :created
-    #   else 
-    #     if @earthquake.errors[:mag].any? || @earthquake.errors[:latitude].any? || @earthquake.errors[:longitude].any?
-    #       # Error in validation fields
-    #       render json: @earthquake.errors, status: :bad_request
-    #     else
-    #       # Generic Error
-    #       render json: @earthquake.errors, status: :internal_server_error
-    #     end
-    #   end
-    # end
-    
-    # private
-
-  # Body
-    #   def earthquake_params
-    #     params.require(:earthquake).permit(:mag, :place, :time, :url, :tsunami, :mag_type, :title, :longitude, :latitude)
-    #   end
 end

@@ -1,0 +1,1 @@
+export const magTypes: string[] = ["md", "ml", "ms", "mw", "me", "mi", "mb", "mlg"];
