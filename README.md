@@ -1,4 +1,4 @@
-# Eathquakes
+# 🌎 Eathquakes
 
 ## 📌 About this proyect
 
@@ -11,13 +11,18 @@ This project was created with:
 
 📍 You can run:
 
-- In Server folder:
-  - `rails server` 
+- Back End: 
+This project is tasked with extracting all earthquakes from the API [earthquake.usgs.gov](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson)
+To obtain all the earthquakes in our API, the command `rake bulk_insert:features` must be executed in api folder
+If the result is successful, the console will say "Bulk executed successfully."
+Then run `rails server` to initialize the server.
 
-- In Client folder:
+Front End
+In Client folder execute the commands: 
   - `npm install` 
-  - `npm run dev` 
+  - `npm run dev`
 
+When the project is initialized, you can view it at
 <!-- Open [http://localhost:5173](http://localhost:5173) to view it in your browser. -->
 
 ## 📌 Sections of this project
