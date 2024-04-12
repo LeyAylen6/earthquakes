@@ -3,8 +3,8 @@
 ## 📌 About this proyect
 
 This project was created with:
-- __Front End__: React, Redux, Html, Css
-- __Back End__: Node Js, Express, Sequelize
+- __Front End__: React, Css
+- __Back End__: Ruby, Ruby on Rails
 - __Database__: SQLite, ActiveRecord (ORM)
 
 ### 📌 How to start this page ?
