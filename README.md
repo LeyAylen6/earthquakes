@@ -33,7 +33,7 @@ Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
   - Endpoint used on this page:
     - GET /api/features?page=1&mag_type=mb,md,ml&per_page=1
 <div align="center"> 
-    <img align="center" src='./client/src./assets/projectsViews/home.gif'></img>
+    <img align="center" src='./client/src/assets/projectsViews/home.gif'></img>
 </div>
 
 ### ⚡️Detail:
