@@ -1,4 +1,5 @@
 # 🌎 Eathquakes
+Earthquakes is a project that is responsible for showing seismological data from around the world.
 
 ## 📌 About this proyect
 
