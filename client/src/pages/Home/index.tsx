@@ -53,7 +53,7 @@ const Home: React.FC = () => {
                 />
             </Box>
 
-            <Box className={!features?.data?.length ? styles.noResultsFound : styles.features}>
+            <Box className={!features?.data.length ? styles.noResultsFound : styles.features}>
                 {!features?.data?.length
                     ? <NoResultsFound />
                     : features?.data?.map((feature: any) =>

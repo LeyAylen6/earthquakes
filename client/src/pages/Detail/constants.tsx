@@ -35,7 +35,7 @@ export const detailItems = (feature: Feature): DetailItem[] => [
         ubication: feature.attributes.coordinates.latitude.toString(),
         color: "primary",
     }, {
-        title: "More info in: ",
+        title: "+ info: ",
         ubication: feature.links.external_url,
         color: undefined
     }
