@@ -11,14 +11,16 @@ This project was created with:
 
 📍 You can run:
 
-- Back End: 
+- Back End:
+In api folder execute the commands:  
+  - `rails db:migrate` to load the database tables
   - This project runs a "Task" to extract all the earthquakes from the API [earthquake.usgs.gov](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson)
-  To obtain all the earthquakes in our API, the command `rake bulk_insert:features` must be executed in api folder
+  To obtain all the earthquakes in our API, the command `rake bulk_insert:features` must be executed.
   If the result is successful, the console will say "Bulk executed successfully."
   - Then run `rails server` to initialize the server.
 
 Front End
-In Client folder execute the commands: 
+In client folder execute the commands: 
   - `npm install` 
   - `npm run dev`
 
