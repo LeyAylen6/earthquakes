@@ -10,6 +10,7 @@ import { EarthquakeResponse } from "./interfaces";
 import SelectCheckmarks from "../../components/SelectCheckmarks";
 import { Paper, Stack, Typography } from "@mui/material";
 import NoResultsFound from "../../components/NoResultsFound";
+import styles from "./home.module.css"
 
 const Home: React.FC = () => {
     const [features, setFeatures] = useState<EarthquakeResponse | null>(null);
@@ -39,7 +40,7 @@ const Home: React.FC = () => {
     return (
         <Stack direction="column">
             <Box display="flex" justifyContent="space-between">
-                <Paper elevation={4} sx={{ width: 200, height: 50, display: "flex", justifyContent: "space-evenly", alignItems: "center", mt: 1 }}>
+                <Paper elevation={4} className={styles.totalContainer}>
                     <Typography variant="body1" mt={.5}>Total:</Typography>
                     <Typography variant="h6">{features?.pagination?.total}</Typography>
                 </Paper>
@@ -52,7 +53,7 @@ const Home: React.FC = () => {
                 />
             </Box>
 
-            <Box display="flex" flexWrap="wrap" justifyContent="space-between" height={"90%"}>
+            <Box className={!features?.data?.length ? styles.noResultsFound : styles.features}>
                 {!features?.data?.length
                     ? <NoResultsFound />
                     : features?.data?.map((feature: any) =>
@@ -63,8 +64,8 @@ const Home: React.FC = () => {
                 }
             </Box>
 
-            <Box mt={5} mb={5}>
-                <Pagination count={MAX_PAGES || 10} page={page} onChange={handleChangePages} color="secondary" />
+            <Box mt={5} mb={5} display="flex" justifyContent="center">
+                <Pagination count={MAX_PAGES || 10} page={page} onChange={handleChangePages} color="secondary" sx={{ width: "25%" }} />
             </Box>
         </Stack>
     )
