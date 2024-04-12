@@ -23,7 +23,7 @@ In Client folder execute the commands:
   - `npm run dev`
 
 When the project is initialized, you can view it at
-<!-- Open [http://localhost:5173](http://localhost:5173) to view it in your browser. -->
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 ## 📌 Sections of this project
 
@@ -32,7 +32,7 @@ When the project is initialized, you can view it at
 - If you tap a card, you will be redirected to the earthquake details.
   - Endpoint used on this page: example: /api/features?page=1&mag_type=mb,md,ml&per_page=1
 <div align="center"> 
-<!--     <img align="center" src='./assets/login.gif'></img> -->
+    <img align="center" src='./assets/projectsViews/home.jpeg'></img>
 </div>
 
 ### ⚡️Detail:
@@ -41,11 +41,11 @@ When the project is initialized, you can view it at
     - POST /api/features/:id/comments
     - 💣 Endpoint extra: GET /api/features/:id/comments
 <div align="center"> 
-<!--     <img align="center" src='./assets/home.gif'></img> -->
+    <img align="center" src='./assets/projectsViews/detail.jpeg'></img>
 </div>
 
 ### ⚡️About:
 - This section will have information about me and the project technologies. Will be developed soon.
 <div align="center"> 
-<!--     <img align="center" src='./assets/about.gif'></img> -->
+    <img align="center" src='./assets/projectsViews/about.jpeg'></img>
 </div>
