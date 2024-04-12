@@ -30,9 +30,10 @@ Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 ### ⚡️Home:
 - You can see all the earthquakes, a statistic for the total number of earthquakes found and a multiple filter for the mag_type feature
 - If you tap a card, you will be redirected to the earthquake details.
-  - Endpoint used on this page: example: /api/features?page=1&mag_type=mb,md,ml&per_page=1
+  - Endpoint used on this page:
+    - GET /api/features?page=1&mag_type=mb,md,ml&per_page=1
 <div align="center"> 
-    <img align="center" src='.client/src/assets/projectsViews/home.jpeg'></img>
+    <img align="center" src='./client/src./assets/projectsViews/home.jpeg'></img>
 </div>
 
 ### ⚡️Detail:
@@ -41,11 +42,11 @@ Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
     - POST /api/features/:id/comments
     - 💣 Endpoint extra: GET /api/features/:id/comments
 <div align="center"> 
-    <img align="center" src='.client/src/assets/projectsViews/detail.jpeg'></img>
+    <img align="center" src='./client/src/assets/projectsViews/detail.jpeg'></img>
 </div>
 
 ### ⚡️About:
 - This section will have information about me and the project technologies. Will be developed soon.
 <div align="center"> 
-    <img align="center" src='.client/src/assets/projectsViews/about.jpeg'></img>
+    <img align="center" src='./client/src/assets/projectsViews/about.jpeg'></img>
 </div>
